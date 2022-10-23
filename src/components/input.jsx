@@ -6,6 +6,7 @@ export default function Input({
   errorMessage,
   required,
   name,
+  onclick,
   onchange,
   type,
   label,
@@ -15,7 +16,7 @@ export default function Input({
 }) {
   const classes = clx("font-dmsans text-base font-medium", classname);
   return (
-    <div className={classes}>
+    <div className={classes} onClick={onclick}>
       <span className='block font-medium text-primary'>{label} {required && <span className="text-red-500">*</span>}</span>
       <input
         type={type}

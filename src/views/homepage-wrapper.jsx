@@ -39,8 +39,12 @@ export default function HomepageWrapper() {
         </div>
       </div>
 
-      <Modal isOpen={isModalOpen} classname='flex justify-center items-center'>
-                    <SignupForm onclick={()=>setModalOpen(false)} />
+      <Modal
+        isOpen={isModalOpen}
+        onclick={(e) =>e?.target===e?.currentTarget && setModalOpen(false)}
+        classname='flex justify-center items-center'
+      >
+        <SignupForm onclick={() => setModalOpen(false)} />
       </Modal>
     </React.Fragment>
   );

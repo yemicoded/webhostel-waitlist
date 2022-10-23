@@ -5,6 +5,8 @@ import { clx } from "../utils/clx";
 
 export default function Select({
   label,
+  isOpen,
+  setOpen,
   name,
   errorMessage,
   onchange,
@@ -16,7 +18,6 @@ export default function Select({
   classname,
   children,
 }) {
-  const [isOpen, setOpen] = React.useState(false);
   const [selectedOption, setSelectedOption] = React.useState(null);
 
   const handleSelect = (option) => {
@@ -31,7 +32,7 @@ export default function Select({
   );
 
   return (
-    <div>
+    <div onClick={onclick}>
       <span className='block font-medium text-primary font-dmsans text-base'>
         {label} {required && <span className='text-red-500'>*</span>}
       </span>
@@ -41,7 +42,7 @@ export default function Select({
         </div>
         <IoIosArrowDown
           className={`${isOpen ? "rotate-180" : "rotate-0"} cursor-pointer`}
-          onClick={() => setOpen((state) => !state)}
+          onClick={()=>setOpen((state) => !state)}
         />
 
         {isOpen && (

@@ -8,6 +8,8 @@ import Select from "../../components/select";
 import { clx } from "../../utils/clx";
 
 export default function SignupForm({ onclick, classname, children }) {
+  const [isSelectOpen, setSelectOpen] = React.useState(false);
+
   const initialValues = {
     firstName: "",
     email: "",
@@ -40,7 +42,10 @@ export default function SignupForm({ onclick, classname, children }) {
     classname
   );
   return (
-    <div className={classes}>
+    <div
+      className={classes}
+      onClick={(e) => e?.target === e?.currentTarget && setSelectOpen(false)}
+    >
       <MdOutlineCancel
         size={30}
         className='block absolute right-[20px] lg:right-[50px] top-[30px] cursor-pointer'
@@ -59,19 +64,23 @@ export default function SignupForm({ onclick, classname, children }) {
             value={formik.values.firstName}
             onchange={formik.handleChange}
             errorMessage={formik.errors.firstName}
+            onclick={() => setSelectOpen(false)}
             required
           />
           <Input
             label='Email'
-            placeholder='Enter your name here'
+            placeholder='Enter your email here'
             type='email'
             name='email'
             value={formik.values.email}
             onchange={formik.handleChange}
             errorMessage={formik.errors.email}
+            onclick={() => setSelectOpen(false)}
             required
           />
           <Select
+            isOpen={isSelectOpen}
+            setOpen={setSelectOpen}
             label='How would you like to be involved with the comunity?'
             placeholder='Select an option'
             name='account_type'
