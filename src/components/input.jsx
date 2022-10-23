@@ -4,6 +4,7 @@ import { clx } from "../utils/clx";
 export default function Input({
   value,
   errorMessage,
+  required,
   name,
   onchange,
   type,
@@ -15,7 +16,7 @@ export default function Input({
   const classes = clx("font-dmsans text-base font-medium", classname);
   return (
     <div className={classes}>
-      <span className='block font-medium text-primary'>{label}</span>
+      <span className='block font-medium text-primary'>{label} {required && <span className="text-red-500">*</span>}</span>
       <input
         type={type}
         name={name}

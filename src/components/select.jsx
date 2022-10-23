@@ -9,6 +9,7 @@ export default function Select({
   errorMessage,
   onchange,
   value,
+  required,
   options,
   placeholder,
   onclick,
@@ -32,11 +33,11 @@ export default function Select({
   return (
     <div>
       <span className='block font-medium text-primary font-dmsans text-base'>
-        {label}
+        {label} {required && <span className='text-red-500'>*</span>}
       </span>
       <div className={classes}>
         <div className='w-full font-medium font-dmsans'>
-          {selectedOption?selectedOption:placeholder}
+          {selectedOption ? selectedOption : placeholder}
         </div>
         <IoIosArrowDown
           className={`${isOpen ? "rotate-180" : "rotate-0"} cursor-pointer`}
@@ -79,7 +80,9 @@ export default function Select({
           </div>
         )}
       </div>
-      {errorMessage && !selectedOption && <p className='text-red-500'>{errorMessage}</p>}
+      {errorMessage && !selectedOption && (
+        <p className='text-red-500'>{errorMessage}</p>
+      )}
     </div>
   );
 }

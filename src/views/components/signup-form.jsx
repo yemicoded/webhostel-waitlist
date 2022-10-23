@@ -59,7 +59,7 @@ export default function SignupForm({ onclick, classname, children }) {
             value={formik.values.firstName}
             onchange={formik.handleChange}
             errorMessage={formik.errors.firstName}
-            //   onBlur={formik.handleBlur}
+            required
           />
           <Input
             label='Email'
@@ -69,6 +69,7 @@ export default function SignupForm({ onclick, classname, children }) {
             value={formik.values.email}
             onchange={formik.handleChange}
             errorMessage={formik.errors.email}
+            required
           />
           <Select
             label='How would you like to be involved with the comunity?'
@@ -77,6 +78,7 @@ export default function SignupForm({ onclick, classname, children }) {
             value={formik.values.account_type}
             onchange={formik}
             errorMessage={formik.errors.account_type}
+            required
           ></Select>
         </div>
         <Button classname='w-full my-12 text-center' type='submit'>
