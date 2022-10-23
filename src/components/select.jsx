@@ -5,24 +5,29 @@ import { clx } from "../utils/clx";
 
 export default function Select({
   label,
+  name,
+  errorMessage,
+  onchange,
+  value,
   options,
   placeholder,
   onclick,
   classname,
   children,
 }) {
-      const [isOpen, setOpen] = React.useState(false);
-      const [value, setValue] = React.useState(null)
+  const [isOpen, setOpen] = React.useState(false);
+  const [selectedOption, setSelectedOption] = React.useState(null);
 
-      const handleSelect = (option) => {
-            setValue(option)
-            setOpen(false)
-      }
+  const handleSelect = (option) => {
+    onchange.values[name] = option;
+    setSelectedOption(option);
+    setOpen(false);
+  };
 
   const classes = clx(
     "flex items-center px-4 py-3 my-1 bg-[#EDECEE] rounded-xl relative",
     classname
-      );
+  );
 
   return (
     <div>
@@ -31,7 +36,7 @@ export default function Select({
       </span>
       <div className={classes}>
         <div className='w-full font-medium font-dmsans'>
-          {value ? value : placeholder}
+          {selectedOption?selectedOption:placeholder}
         </div>
         <IoIosArrowDown
           className={`${isOpen ? "rotate-180" : "rotate-0"} cursor-pointer`}
@@ -42,6 +47,7 @@ export default function Select({
           <div className='absolute top-[105%] left-0 w-full shadow-xl rounded-xl bg-white h-fit  overflow-hidden'>
             <div
               className='flex gap-4 items-center border-b-2 border-black px-6 py-4 hover:bg-[#EDECEE] cursor-pointer'
+              data-value='Agent'
               onClick={() => handleSelect("Agent")}
             >
               <BiUserCircle className='text-3xl block' />
@@ -56,6 +62,7 @@ export default function Select({
             </div>
             <div
               className='flex gap-4 items-center px-6 py-4  hover:bg-[#EDECEE] cursor-pointer'
+              data-value='Client'
               onClick={() => handleSelect("Client")}
             >
               <BiUserCircle className='text-3xl block' />
@@ -72,6 +79,7 @@ export default function Select({
           </div>
         )}
       </div>
+      {errorMessage && !selectedOption && <p className='text-red-500'>{errorMessage}</p>}
     </div>
   );
 }

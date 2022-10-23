@@ -6,6 +6,28 @@
 @tailwind components;
 @tailwind utilities;
 
+.rotate{
+  animation: rotate 5s linear alternate-reverse normal;
+}
+
+@keyframes rotate {
+  0%{
+    transform: rotate(0deg);
+  }
+  25%{
+    transform: rotate(90deg);
+  }
+  50%{
+    transform: rotate(180deg);
+  }
+  75%{
+    transform: rotate(270);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
 /* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

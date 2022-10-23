@@ -3,6 +3,7 @@ import { clx } from '../utils/clx'
 
 export default function Button({
       variant = 'primary',
+      type,
       onclick,
       classname,
       children
@@ -16,8 +17,8 @@ export default function Button({
             classname
       )
       return (
-            <div className={classes} onClick={onclick}>
+            <button className={classes} type={type} onClick={onclick}>
                   {children}
-            </div>
+            </button>
       )
 }
