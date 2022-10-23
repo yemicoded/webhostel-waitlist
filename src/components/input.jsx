@@ -9,16 +9,16 @@ export default function Input({
       children
 }) {
       const classes = clx(
-            "font-dmsans text-[18px]",
+            "font-dmsans text-base font-medium",
             classname
       )
       return (
         <div className={classes}>
-          <span className='block font-medium'>{label}</span>
+          <span className='block font-medium text-primary'>{label}</span>
           <input
             type={type}
             placeholder={placeholder}
-            className='outline-none py-3 px-4 w-full rounded-xl bg-[#EDECEE]'
+            className='outline-none py-3 px-4 w-full rounded-xl my-1 bg-[#EDECEE]'
           />
         </div>
       );

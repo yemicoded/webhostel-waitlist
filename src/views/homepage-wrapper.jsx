@@ -8,7 +8,6 @@ import Select from "../components/select";
 
 export default function HomepageWrapper() {
   const [isModalOpen, setModalOpen] = React.useState(false);
-  const [isSelectOpen, setSelectOpen] = React.useState(false);
 
   return (
     <React.Fragment>
@@ -62,9 +61,8 @@ export default function HomepageWrapper() {
               type='email'
             />
             <Select
-              label='How would you like to be involved with the comunity?'
-              isOpen={isSelectOpen}
-              setOpen={setSelectOpen}
+                                      label='How would you like to be involved with the comunity?'
+                                      placeholder='Select an option'
             ></Select>
           </div>
           <Button classname='w-full my-12 text-center'>Get Notified</Button>
