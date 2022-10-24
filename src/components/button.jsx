@@ -4,6 +4,8 @@ import { clx } from '../utils/clx'
 export default function Button({
       variant = 'primary',
       type,
+      mail,
+      href,
       onclick,
       classname,
       children
@@ -16,6 +18,13 @@ export default function Button({
             'bg-transparent text-primary border-2 border-purple hover:bg-purple/10', 
             classname
       )
+      if (mail) {
+            return (
+                  <a href={`mailto:${mail}`} className={classes}>
+                        {children}
+                  </a>
+            )
+      }
       return (
             <button className={classes} type={type} onClick={onclick}>
                   {children}

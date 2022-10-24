@@ -33,7 +33,7 @@ export default function HomepageWrapper() {
               <Button variant='primary' onclick={() => setModalOpen(true)}>
                 Join our waitlist
               </Button>
-              <Button variant='outline'>Contact Us</Button>
+              <Button variant='outline' mail='webhostels.ng@gmail.com'>Contact Us</Button>
             </div>
           </div>
         </div>
